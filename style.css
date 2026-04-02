@@ -1,0 +1,21 @@
+table, th, td{
+    border: 1px solid white;
+    align-self: center;
+}
+th, td{
+    background-color: #808080;
+    text-align: center;
+    vertical-align: middle;
+    height: 80px;
+    width: 80px;
+}
+div{
+    display: flex; justify-content: center;
+    padding: 10px;
+}
+table{
+    display: flex; justify-content: center;
+}
+h1{
+    display: flex; justify-content: center;
+}
