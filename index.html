@@ -13,18 +13,19 @@
         Rules:
         - You are provided with 5 guess attempts
         - You have to enter 5-letter words only
-        - Enter all letter of the letter in capital
         - After each guess
             - If the letter is correct and at correct position, then the feedback is provided of green colour
             - If the letter is correct but at wrong position, then the feedback is provided of yellow colour
         - In the end
-           - Win if the word is correctly guessed
+            - Win if the word is correctly guessed
             - Lose if the attempts are finished
     </pre>
+    <p id="msg"></p>
     <div>
         <input type="text" id="word" placeholder="Enter the word here">
         <button onclick="addInWordle()">Submit</button>
         <button onclick="startPlaying()">Play</button>
+        <button onclick="restartPlaying()">Restart</button>
     </div>
 
 <!-- w3l1 -> it means letter 1 of word 3 -->

@@ -13,36 +13,58 @@ function selectOutputWord(){
 }
 
 function startPlaying(){
+    displayMsg();
     selectOutputWord();
     console.log(outputWord);
     console.log(attempt);
 }
 
+function restartPlaying(){
+    outputWord = "";
+    attempt = -1;
+    clearWordle();
+    startPlaying();
+}
+
+function clearWordle(){
+    for(let j=0; j<5; j++){
+        for(let i=0; i<5; i++){
+            var a = document.getElementById(`w${j}l${i}`);
+            a.innerHTML = '';
+            a.style.backgroundColor = "#457b9d"
+        }
+    }
+}
+
 function addInWordle(){
-    const inputWord = document.getElementById('word').value;
+    const inputWord = document.getElementById('word').value.toUpperCase();
 
     if(!isValid(inputWord))
         return alert("You entered an invalid input");
 
     attempt++;
+    displayMsg();
 
     for(let i=0; i<5; i++){
-        if(attempt>=5) 
-            return alert("Game Over!!!")
+        if(attempt>=5){
+            displayMsg("Game Over!!! You Lost :(");
+            return;
+        }
 
         var a = document.getElementById(`w${attempt}l${i}`);
         a.innerHTML = inputWord[i];
         if(outputWord[i] == inputWord[i])
-            a.style.backgroundColor = "#5cd65c"
+            a.style.backgroundColor = "#81b29a"
         else if(outputWord.indexOf(inputWord[i]) != -1)
-            a.style.backgroundColor = "#ffff4d"
+            a.style.backgroundColor = "#f2cc8f"
         else
             continue;
+    }
 
-        if(outputWord==inputWord){
-            attempt = 5;
-            return alert("You Won!!!");
-        }
+    if(outputWord==inputWord){
+        attempt = 5;
+        displayMsg("You Won :)");
+        return;
     }
 }
 
@@ -58,4 +80,16 @@ function isValid(word){
     }
 
     return true;
+}
+
+
+function displayMsg(customMsg){
+    const disMsg = document.getElementById('msg');
+    if(customMsg){
+        disMsg.innerHTML = customMsg;
+    }
+    else{
+        const left = 5 - (attempt+1);
+        disMsg.innerHTML = `Attempt Left: ${left}`;
+    }
 }
