@@ -4,7 +4,7 @@ var userPlay = false;
 
 function selectOutputWord(){
     const outputList = [
-        "HELLO", "APPLE", "MANGO", "SOLAR", "POWER", "WORLD", "INDIA", "MOUSE", "CAMEL", "BOOKS", "NOTES", "CHALK", "WRITE", "MATHS", "CREAM", "CABLE"
+        "HELLO", "APPLE", "MANGO", "SOLAR", "POWER", "WORLD", "INDIA", "MOUSE", "CAMEL", "BOOKS", "NOTES", "CHALK", "WRITE", "MATHS", "CREAM", "CABLE", "TABLE", "MATHS", "LATIN"
     ]
 
     const n = outputList.length;
