@@ -1,5 +1,6 @@
 var outputWord = "";
 var attempt = -1;
+var userPlay = false;
 
 function selectOutputWord(){
     const outputList = [
@@ -13,6 +14,7 @@ function selectOutputWord(){
 }
 
 function startPlaying(){
+    userPlay = true;
     displayMsg();
     selectOutputWord();
     console.log(outputWord);
@@ -20,6 +22,7 @@ function startPlaying(){
 }
 
 function restartPlaying(){
+    userPlay = false;
     outputWord = "";
     attempt = -1;
     clearWordle();
@@ -37,13 +40,21 @@ function clearWordle(){
 }
 
 function addInWordle(){
+    if(!userPlay){
+        document.getElementById('word').value = "";
+        displayMsg("You have not start playing. Click Play to begin...");
+        return;
+    }
+
     const inputWord = document.getElementById('word').value.toUpperCase();
 
-    if(!isValid(inputWord))
-        return alert("You entered an invalid input");
+    if(!isValid(inputWord)){
+        displayMsg("You entered an invalid input");
+        document.getElementById('word').value = "";
+        return;
+    }
 
     attempt++;
-    displayMsg();
 
     for(let i=0; i<5; i++){
         if(attempt>=5){
@@ -62,10 +73,14 @@ function addInWordle(){
     }
 
     if(outputWord==inputWord){
+        document.getElementById('word').value = "";
         attempt = 5;
         displayMsg("You Won :)");
         return;
     }
+
+    displayMsg();
+    document.getElementById('word').value = "";
 }
 
 function isValid(word){
@@ -81,7 +96,6 @@ function isValid(word){
 
     return true;
 }
-
 
 function displayMsg(customMsg){
     const disMsg = document.getElementById('msg');
