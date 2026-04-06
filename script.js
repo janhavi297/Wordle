@@ -42,7 +42,7 @@ function clearWordle(){
 function addInWordle(){
     if(!userPlay){
         document.getElementById('word').value = "";
-        displayMsg("You have not start playing. Click Play to begin...");
+        displayMsg("You have not started playing. Click Play to begin...");
         return;
     }
 
